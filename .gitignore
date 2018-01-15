@@ -286,3 +286,12 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+
+# Angular
+
+/dist/
+e2e_test.*
+**/node_modules
+app/**/*.js
+app/**/*.map
+

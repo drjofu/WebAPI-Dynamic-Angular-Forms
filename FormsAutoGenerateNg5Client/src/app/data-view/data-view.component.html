@@ -1,0 +1,33 @@
+<div class="col-md-8" *ngIf="data && propertyDescriptors">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <!-- Header für jede Spalte gemäß der Metadaten -->
+        <th *ngFor="let pd of propertyDescriptors" [hidden]="!pd.visible">{{pd.label}}</th>
+        <th>Aktion </th>
+        <th>
+          <button [disabled]="editorActive" class="btn btn-default btn-xs" (click)="edit()">Neu</button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Alle Datensätze anzeigen -->
+      <tr *ngFor="let d of data" [class.active]="d === selectedEntity">
+        <!-- Daten für jede Spalte gemäß der Metadaten -->
+        <td *ngFor="let pd of propertyDescriptors" [hidden]="!pd.visible">{{getValue(d, pd)}}</td>
+        <!-- Aktionsbuttons -->
+        <td>
+          <button [disabled]="editorActive" class="btn btn-default btn-xs" (click)="edit(d)">Ändern</button>
+        </td>
+        <td>
+          <button [disabled]="editorActive" class="btn btn-default btn-xs" (click)="delete(d)">Löschen</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Editor-Fenster -->
+<div class="col-md-4" *ngIf="selectedEntity && propertyDescriptors">
+  <dynamic-form [propertyDescriptors]="propertyDescriptors" [data]="selectedEntity" (saveData)="saveEntity($event)" (cancelled)="cancelled()"></dynamic-form>
+</div>

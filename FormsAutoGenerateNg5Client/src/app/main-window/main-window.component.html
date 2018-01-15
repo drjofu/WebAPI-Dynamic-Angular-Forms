@@ -1,0 +1,17 @@
+<div class="container-fluid">
+  <div class="row" *ngIf="tabledefinitions">
+    <!-- Navigationsbuttons für alle Tabellen anzeigen -->
+    <div class="col-md-2" *ngFor="let td of tabledefinitions">
+        <button  [routerLink]="['', td.name]" [disabled]="!canNavigate" class="btn btn-default btn-block" [class.active]="td === selectedTabledefinition" >
+          {{td.name}}
+        </button>
+    </div>
+  </div>
+
+  <br/><br/>
+  
+  <!-- Datenansicht für ausgewählte Tabelle -->
+  <div class="row" *ngIf="selectedTabledefinition" >
+    <data-view [tabledefinition]="selectedTabledefinition" (editorActiveChanged)="editorActiveChanged($event)" ></data-view>
+  </div>
+</div>

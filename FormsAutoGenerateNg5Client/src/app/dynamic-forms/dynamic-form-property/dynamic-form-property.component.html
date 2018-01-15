@@ -1,0 +1,58 @@
+<div [formGroup]="form" class="form-group">
+  <!-- Anzeigetext -->
+  <label [attr.for]="propertyDescriptor.name" class="center-block">{{propertyDescriptor.label}}</label>
+
+  <!-- Controltypes "textbox" und "dropdown unterscheiden" -->
+  <div [ngSwitch]="propertyDescriptor.controlType">
+
+    <ng-template [ngSwitchCase]="'textbox'">
+      <!-- Achtung! type kann nicht einfach gebunden werden! Sonst funktionieren die Direktiven von Angular nicht (selector läuft ins Leere). -->
+      <!-- Daher müssen die <input>-Elemente einzeln angelegt werden -->
+      <input *ngIf="!propertyDescriptor.displayType || propertyDescriptor.displayType=='text'" [type]="propertyDescriptor.displayType"
+        [readonly]="propertyDescriptor.readOnly" [formControlName]="propertyDescriptor.name" [id]="propertyDescriptor.name"
+        class="form-control">
+
+      <input *ngIf="propertyDescriptor.displayType =='number'" type="number" [formControlName]="propertyDescriptor.name" [id]="propertyDescriptor.name"
+        class="form-control">
+
+      <input *ngIf="propertyDescriptor.displayType =='checkbox'" type="checkbox" [formControlName]="propertyDescriptor.name" [id]="propertyDescriptor.name"
+        class="form-control">
+
+      <input *ngIf="propertyDescriptor.displayType =='date'" type="date" [formControlName]="propertyDescriptor.name" [id]="propertyDescriptor.name"
+        class="form-control">
+
+    </ng-template>
+
+    <!-- DropDown-Liste -->
+    <select [id]="propertyDescriptor.name" *ngSwitchCase="'dropdown'" [formControlName]="propertyDescriptor.name" class="form-control">
+      <!-- Optionsfelder -->
+      <option *ngFor="let opt of propertyDescriptor.options" [value]="opt.key">{{opt.value}}</option>
+    </select>
+  </div>
+
+  <!-- Validierungsmeldungen (mehrere können gleichzeitig gültig sein) -->
+  <div class="text-danger" *ngIf="!isValid">
+
+    <div *ngIf="form.controls[propertyDescriptor.name].errors?.minlength">
+      Eingabe hat {{form.controls[propertyDescriptor.name].errors.minlength.actualLength}} Zeichen. {{form.controls[propertyDescriptor.name].errors.minlength.requiredLength}}
+      sind erforderlich.
+    </div>
+
+    <div *ngIf="form.controls[propertyDescriptor.name].errors?.maxlength">
+      Eingabe hat {{form.controls[propertyDescriptor.name].errors.maxlength.actualLength}} Zeichen. Maximal {{form.controls[propertyDescriptor.name].errors.maxlength.requiredLength}}
+      sind erlaubt.
+    </div>
+
+    <div *ngIf="form.controls[propertyDescriptor.name].errors?.min">
+      Minimum ist {{form.controls[propertyDescriptor.name].errors.min.min}}.
+    </div>
+
+    <div *ngIf="form.controls[propertyDescriptor.name].errors?.max">
+      Maximum ist {{form.controls[propertyDescriptor.name].errors.max.max}}.
+    </div>
+
+    <div *ngIf="form.controls[propertyDescriptor.name].errors?.required">
+      Die Eingabe ist erforderlich.
+    </div>
+  </div>
+</div>

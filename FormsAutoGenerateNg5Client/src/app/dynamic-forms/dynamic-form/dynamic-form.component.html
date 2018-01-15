@@ -1,0 +1,15 @@
+<div >
+  <form (ngSubmit)="onSubmit()" [formGroup]="form">
+    <!-- Eingabefelder für alle Properties erstellen -->
+    <div *ngFor="let propertyDescriptor of propertyDescriptors" class="form-row"  [hidden]="!propertyDescriptor.visible">
+      <dynamic-form-property [propertyDescriptor]="propertyDescriptor" [form]="form"></dynamic-form-property>
+    </div>
+
+    <!-- Aktionsschaltflächen -->
+    <div class="form-row">
+      <button type="submit" [disabled]="!form.valid || form.pristine" class="btn btn-default">Speichern</button>
+      <button type="button" (click)="cancel()" class="btn btn-warning">Abbrechen</button>
+    </div>
+  </form>
+ 
+</div>

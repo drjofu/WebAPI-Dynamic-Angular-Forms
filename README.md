@@ -3,7 +3,7 @@ Create Angular Forms dynamically from generic Web-APIs
 
 # Installation
 ## Server
-Open FormsAutoGenerateWebApiServerCore2 in Visual Studio.
+Open and run FormsAutoGenerateWebApiServerCore2 in Visual Studio.
 Make sure it runs in Debug on Port 33554
 
 ## Client

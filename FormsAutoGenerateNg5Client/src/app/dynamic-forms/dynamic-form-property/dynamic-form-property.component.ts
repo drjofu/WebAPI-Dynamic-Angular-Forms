@@ -16,9 +16,6 @@ export class DynamicFormPropertyComponent implements OnInit {
   // FormGroup-Objekt für dieses Control
   @Input() form: FormGroup;
 
-  // Gültigkeitsprüfung
-  get isValid() { return this.form.controls[this.propertyDescriptor.name].valid; }
-
   constructor() { }
  
   ngOnInit() {

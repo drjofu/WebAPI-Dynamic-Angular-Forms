@@ -20,7 +20,7 @@ namespace FormsAutoGenerateWebApiServerCore2.Controllers
     public IEnumerable<Tabledefinition> Get()
     {
       return tabledefinitions;
-
+      
     }
   }
 }

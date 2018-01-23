@@ -31,7 +31,7 @@
   </div>
 
   <!-- Validierungsmeldungen (mehrere können gleichzeitig gültig sein) -->
-  <div class="text-danger" *ngIf="!isValid">
+  <div class="text-danger" *ngIf="!form.controls[propertyDescriptor.name].valid">
 
     <div *ngIf="form.controls[propertyDescriptor.name].errors?.minlength">
       Eingabe hat {{form.controls[propertyDescriptor.name].errors.minlength.actualLength}} Zeichen. {{form.controls[propertyDescriptor.name].errors.minlength.requiredLength}}

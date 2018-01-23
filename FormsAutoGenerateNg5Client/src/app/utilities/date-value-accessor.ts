@@ -21,7 +21,7 @@ export const DATE_VALUE_ACCESSOR: any = {
   // selector: 'input[type=date][formControlName],input[type=date][formControl],input[type=date][ngModel]',
 
   // this selector is an opt-in version
-  selector: '::ng-deep input[type=date]',
+  selector: 'input[type=date]',
   providers: [DATE_VALUE_ACCESSOR]
 })
 export class DateValueAccessor implements ControlValueAccessor {

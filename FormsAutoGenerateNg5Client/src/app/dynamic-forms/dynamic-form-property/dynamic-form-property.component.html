@@ -54,5 +54,15 @@
     <div *ngIf="form.controls[propertyDescriptor.name].errors?.required">
       Die Eingabe ist erforderlich.
     </div>
+
+    <div *ngIf="form.controls[propertyDescriptor.name].errors?.evenNumber">
+      Der Wert {{form.controls[propertyDescriptor.name].errors.evenNumber.value}} ist nicht gerade!
+    </div>
+
+    <div *ngIf="form.controls[propertyDescriptor.name].errors?.dividableBy">
+      Der Wert {{form.controls[propertyDescriptor.name].errors.dividableBy.value}} ist nicht durch  {{form.controls[propertyDescriptor.name].errors.dividableBy.divisor}} teilbar!
+    </div>
+
+    
   </div>
 </div>

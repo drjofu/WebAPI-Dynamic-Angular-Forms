@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,4 +18,38 @@ namespace FormsAutoGenerateAnsatzWebApiServer.Reflection
     // Feld mit den anzuzeigenden Informationen
     public string ValueField { get; set; }
   }
+
+  [AttributeUsage(AttributeTargets.Property)]
+  public class EvenNumberAttribute : ValidationAttribute
+  {
+    public override bool IsValid(object value)
+    {
+      if (!(value is int)) return false;
+      int v = (int)value;
+      return (v % 2) == 0;
+    }
+  }
+
+  [AttributeUsage(AttributeTargets.Property)]
+  public class DividableByAttribute : ValidationAttribute
+  {
+    public int Divisor { get; set; }
+    public DividableByAttribute(int divisor)
+    {
+      this.Divisor = divisor;
+    }
+
+    public DividableByAttribute()
+    {
+
+    }
+
+    public override bool IsValid(object value)
+    {
+      if (!(value is int)) return false;
+      int v = (int)value;
+      return (v % Divisor) == 0;
+    }
+  }
+
 }

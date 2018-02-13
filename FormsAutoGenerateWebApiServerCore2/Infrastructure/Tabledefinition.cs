@@ -26,39 +26,40 @@ namespace FormsAutoGenerateWebApiServerCore2.Infrastructure
     // Automatische Generierung aus DbContext-Klasse
     public static IEnumerable<Tabledefinition> CreateFromDbContext<TDbContext>() where TDbContext : DbContext, new()
     {
-      var ctx = new TDbContext();
-
-      var type = typeof(TDbContext);
-
-      // Alle Property der Kontextklasse, die vom Typ DbSet<> sind
-      var dbsets = type.GetProperties().Where(t => t.PropertyType.IsGenericType && t.PropertyType.GetGenericTypeDefinition() == typeof(DbSet<>));
-
-      var tds = new List<Tabledefinition>();
-
-      // Alle DbSets bearbeiten
-      foreach (var p in dbsets)
+      using (var ctx = new TDbContext())
       {
-        // Typ der Model-Klasse
-        var pt = p.PropertyType.GenericTypeArguments[0];
 
-        // Metadaten für Model-Klasse anlegen
-        var td = new Tabledefinition
+        var type = typeof(TDbContext);
+
+        // Alle Property der Kontextklasse, die vom Typ DbSet<> sind
+        var dbsets = type.GetProperties().Where(t => t.PropertyType.IsGenericType && t.PropertyType.GetGenericTypeDefinition() == typeof(DbSet<>));
+
+        var tds = new List<Tabledefinition>();
+
+        // Alle DbSets bearbeiten
+        foreach (var p in dbsets)
         {
-          Name = p.Name,
-          Typename = p.PropertyType.GenericTypeArguments[0].Name,
-          Url = p.Name,
-          PropertyDescriptors = AngularPropertyDescriptionGenerator.GetAngularPropertyDescriptionForType(pt, ctx).ToList()
-        };
+          // Typ der Model-Klasse
+          var pt = p.PropertyType.GenericTypeArguments[0];
 
-        // Primärschlüssel ermitteln
-        var et = ctx.Model.FindEntityType(pt);
-        var pk = et.FindPrimaryKey();
-        td.PrimaryKey = pk?.Properties.FirstOrDefault()?.Name.ToCamelCase();
+          // Metadaten für Model-Klasse anlegen
+          var td = new Tabledefinition
+          {
+            Name = p.Name,
+            Typename = p.PropertyType.GenericTypeArguments[0].Name,
+            Url = p.Name,
+            PropertyDescriptors = AngularPropertyDescriptionGenerator.GetAngularPropertyDescriptionForType(pt, ctx).ToList()
+          };
 
-        tds.Add(td);
+          // Primärschlüssel ermitteln
+          var et = ctx.Model.FindEntityType(pt);
+          var pk = et.FindPrimaryKey();
+          td.PrimaryKey = pk?.Properties.FirstOrDefault()?.Name.ToCamelCase();
+
+          tds.Add(td);
+        }
+        return tds;
       }
-
-      return tds;
     }
   }
 }

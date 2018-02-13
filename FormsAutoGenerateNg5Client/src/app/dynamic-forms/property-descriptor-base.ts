@@ -27,4 +27,8 @@ export class PropertyDescriptorBase {
 
   // Schreibschutz im Editor
   readOnly: boolean;
+
+  // eigenes Attribut
+  evenNumber: boolean;
+  dividableBy: number | null;
 }

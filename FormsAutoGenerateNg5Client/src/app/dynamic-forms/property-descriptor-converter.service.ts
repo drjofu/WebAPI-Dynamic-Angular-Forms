@@ -30,6 +30,21 @@ export class PropertyDescriptorConverterService {
       if (propertyDescriptor.minimum) validators.push(Validators.min(propertyDescriptor.minimum));
       if (propertyDescriptor.maximum) validators.push(Validators.max(propertyDescriptor.maximum));
 
+      // EvenNumber-Attribut auswerten
+      if (propertyDescriptor.evenNumber) validators.push(ctrl => {
+        let n = ctrl.value;
+        if ((n % 2) != 0) return { 'evenNumber': { value: n } };
+        return null;
+      });
+
+      if(propertyDescriptor.dividableBy) validators.push(ctrl=>{
+        let n = ctrl.value;
+        if ((n % propertyDescriptor.dividableBy) != 0) return { 'dividableBy': { value: n, divisor: propertyDescriptor.dividableBy} };
+        return null;
+
+      });
+
+
       // FormControl-Instanz anlegen und der Gruppe hinzufügen
       var fc = new FormControl(value, validators);
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FormsAutoGenerateAnsatzWebApiServer.Reflection;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -22,6 +23,9 @@ namespace FormsAutoGenerateWebApiServerCore2.Models
     public string Adresse { get; set; }
 
     [Range(18,120)]
+    [DividableBy(5)]
+    [EvenNumber]
+    [DataType("number")]
     public int Alter { get; set; }
   }
 }

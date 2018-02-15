@@ -106,6 +106,13 @@ namespace FormsAutoGenerateAnsatzWebApiServer.Infrastructure
         angularPropertyDescription.MinLength = propertyDescriptor.GetAttribute<MinLengthAttribute>()?.Length;
         angularPropertyDescription.MaxLength = propertyDescriptor.GetAttribute<MaxLengthAttribute>()?.Length;
 
+        var stringlength = propertyDescriptor.GetAttribute<StringLengthAttribute>();
+        if(stringlength != null)
+        {
+          angularPropertyDescription.MaxLength = stringlength.MaximumLength;
+          angularPropertyDescription.MinLength = stringlength.MinimumLength;
+        }
+
         // Bereichseinschränkungen (wird nur bei numerischen Typen berücksichtigt)
         angularPropertyDescription.Minimum = propertyDescriptor.GetAttribute<RangeAttribute>()?.Minimum;
         angularPropertyDescription.Maximum = propertyDescriptor.GetAttribute<RangeAttribute>()?.Maximum;

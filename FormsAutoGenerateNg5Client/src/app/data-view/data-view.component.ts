@@ -115,7 +115,7 @@ export class DataViewComponent implements OnInit {
 
     // Falls ein Datum dargestellt werden soll, umwandeln
     if (propertyDescriptor.displayType == "date")
-      value = new Date(value).toLocaleDateString();//.toISOString();
+      value = new Date(value).toLocaleDateString();
 
     // dito für Zahlenwerte
     if (propertyDescriptor.displayType == "number" && value.toLocaleString)

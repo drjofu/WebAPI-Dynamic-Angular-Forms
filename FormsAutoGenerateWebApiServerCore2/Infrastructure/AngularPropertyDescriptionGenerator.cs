@@ -99,7 +99,8 @@ namespace FormsAutoGenerateAnsatzWebApiServer.Infrastructure
         angularPropertyDescription.Required = propertyDescriptor.GetAttributeExists<RequiredAttribute>();
 
         // Required auch für non Nullable Value Types
-        angularPropertyDescription.Required |= propertyDescriptor.PropertyType.IsValueType && Nullable.GetUnderlyingType(propertyDescriptor.PropertyType) == null;
+        angularPropertyDescription.Required |= propertyDescriptor.PropertyType.IsValueType 
+          && Nullable.GetUnderlyingType(propertyDescriptor.PropertyType) == null;
 
         // String-Längen-Einschränkungen
         angularPropertyDescription.MinLength = propertyDescriptor.GetAttribute<MinLengthAttribute>()?.Length;
@@ -120,6 +121,7 @@ namespace FormsAutoGenerateAnsatzWebApiServer.Infrastructure
           var et = ctx.Model.FindEntityType(type);
           var p = et.FindProperty(propertyDescriptor.Name);
           angularPropertyDescription.IsPrimaryKey |= p.IsPrimaryKey();
+          //angularPropertyDescription.ReadOnly |= angularPropertyDescription.IsPrimaryKey;
         }
 
         yield return angularPropertyDescription;

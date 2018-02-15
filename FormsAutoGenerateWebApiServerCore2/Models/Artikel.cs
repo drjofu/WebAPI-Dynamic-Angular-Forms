@@ -1,13 +1,10 @@
 ﻿using FormsAutoGenerateAnsatzWebApiServer.Reflection;
-using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace FormsAutoGenerateWebApiServerCore2.Models
 {
-  //[ModelMetadataType(typeof(ArtikelMetadata))]
   public class Artikel
   {
     [ScaffoldColumn(false)]
@@ -18,7 +15,7 @@ namespace FormsAutoGenerateWebApiServerCore2.Models
     [StringLength(20)]
     public string Bezeichnung { get; set; }
 
-    [Display(Name = "Preis", Order = 2)]
+    [Display(Name = "Preis", Order = 4)]
     [DisplayFormat(DataFormatString = "0.00")]
     [DataType("number")]
     public double Preis { get; set; }
@@ -26,8 +23,10 @@ namespace FormsAutoGenerateWebApiServerCore2.Models
     [JsonIgnore]
     public Artikelkategorie Kategorie { get; set; }
 
-    [LookupTable(LookupUrl = "Artikelkategorien", KeyField =nameof(Artikelkategorie.Id), ValueField =nameof(Artikelkategorie.Bezeichnung))]
-    [Display(Name = "Kategorie", Order = 4)]
+    [LookupTable(LookupUrl = "Artikelkategorien",
+      KeyField = nameof(Artikelkategorie.Id),
+      ValueField = nameof(Artikelkategorie.Bezeichnung))]
+    [Display(Name = "Kategorie", Order = 2)]
     public int KategorieId { get; set; }
 
     [Display(Name = "Auf Lager", Order = 5)]
@@ -44,7 +43,7 @@ namespace FormsAutoGenerateWebApiServerCore2.Models
   }
 
 
- 
+
 
 
 }

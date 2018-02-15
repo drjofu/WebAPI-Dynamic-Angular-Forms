@@ -32,7 +32,9 @@ namespace FormsAutoGenerateWebApiServerCore2.Infrastructure
         var type = typeof(TDbContext);
 
         // Alle Property der Kontextklasse, die vom Typ DbSet<> sind
-        var dbsets = type.GetProperties().Where(t => t.PropertyType.IsGenericType && t.PropertyType.GetGenericTypeDefinition() == typeof(DbSet<>));
+        var dbsets = type.GetProperties()
+          .Where(t => t.PropertyType.IsGenericType 
+          && t.PropertyType.GetGenericTypeDefinition() == typeof(DbSet<>));
 
         var tds = new List<Tabledefinition>();
 
@@ -48,7 +50,10 @@ namespace FormsAutoGenerateWebApiServerCore2.Infrastructure
             Name = p.Name,
             Typename = p.PropertyType.GenericTypeArguments[0].Name,
             Url = p.Name,
-            PropertyDescriptors = AngularPropertyDescriptionGenerator.GetAngularPropertyDescriptionForType(pt, ctx).ToList()
+            PropertyDescriptors = AngularPropertyDescriptionGenerator
+              .GetAngularPropertyDescriptionForType(pt, ctx)
+              .OrderBy(pd=>pd.Order)
+              .ToList()
           };
 
           // Primärschlüssel ermitteln

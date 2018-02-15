@@ -14,6 +14,7 @@ export class PropertyDescriptorConverterService {
     let group = {};
 
     propertyDescriptors.forEach(propertyDescriptor => {
+      
       // Wert ermitteln
       let value = data[propertyDescriptor.name];
 

@@ -16,34 +16,34 @@ namespace FormsAutoGenerateAnsatzWebApiServer.Reflection
     public string ValueField { get; set; }
   }
 
-  [AttributeUsage(AttributeTargets.Property)]
-  public class EvenNumberAttribute : ValidationAttribute
-  {
-    public override bool IsValid(object value)
-    {
-      if (!(value is int)) return false;
-      int v = (int)value;
-      return (v % 2) == 0;
-    }
-  }
+  //[AttributeUsage(AttributeTargets.Property)]
+  //public class EvenNumberAttribute : ValidationAttribute
+  //{
+  //  public override bool IsValid(object value)
+  //  {
+  //    if (!(value is int)) return false;
+  //    int v = (int)value;
+  //    return (v % 2) == 0;
+  //  }
+  //}
 
-  [AttributeUsage(AttributeTargets.Property)]
-  public class DividableByAttribute : ValidationAttribute
-  {
-    public int Divisor { get; set; }
-    public DividableByAttribute(int divisor)
-    {
-      this.Divisor = divisor;
-    }
+  //[AttributeUsage(AttributeTargets.Property)]
+  //public class DividableByAttribute : ValidationAttribute
+  //{
+  //  public int Divisor { get; set; }
+  //  public DividableByAttribute(int divisor)
+  //  {
+  //    this.Divisor = divisor;
+  //  }
 
-    public DividableByAttribute() { }
+  //  public DividableByAttribute() { }
 
-    public override bool IsValid(object value)
-    {
-      if (!(value is int)) return false;
-      int v = (int)value;
-      return (v % Divisor) == 0;
-    }
-  }
+  //  public override bool IsValid(object value)
+  //  {
+  //    if (!(value is int)) return false;
+  //    int v = (int)value;
+  //    return (v % Divisor) == 0;
+  //  }
+  //}
 
 }

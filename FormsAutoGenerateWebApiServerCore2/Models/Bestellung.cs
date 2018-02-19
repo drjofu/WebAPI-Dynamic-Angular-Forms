@@ -13,7 +13,7 @@ namespace FormsAutoGenerateWebApiServerCore2.Models
     [LookupTable(LookupUrl = "Artikel", KeyField = nameof(Artikel.Id), ValueField = nameof(Artikel.Bezeichnung))]
     public int ArtikelId { get; set; }
 
-    [DividableBy(100)]
+
     [DataType("number")]
     public int Menge { get; set; }
 

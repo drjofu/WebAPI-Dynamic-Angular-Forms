@@ -30,6 +30,9 @@ namespace FormsAutoGenerateWebApiServerCore2.Models
         db.Bestellungen.Add(new Bestellung { ArtikelId = 1, KundeId = 3 });
         db.Bestellungen.Add(new Bestellung { ArtikelId = 1, KundeId = 2 });
 
+
+
+
         db.SaveChanges();
       }
 

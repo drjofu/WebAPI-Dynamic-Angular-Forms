@@ -117,8 +117,9 @@ namespace FormsAutoGenerateAnsatzWebApiServer.Infrastructure
         angularPropertyDescription.Minimum = propertyDescriptor.GetAttribute<RangeAttribute>()?.Minimum;
         angularPropertyDescription.Maximum = propertyDescriptor.GetAttribute<RangeAttribute>()?.Maximum;
 
-        angularPropertyDescription.EvenNumber = propertyDescriptor.GetAttribute<EvenNumberAttribute>() != null;
-        angularPropertyDescription.DividableBy = propertyDescriptor.GetAttribute<DividableByAttribute>()?.Divisor;
+        //angularPropertyDescription.EvenNumber = propertyDescriptor.GetAttribute<EvenNumberAttribute>() != null;
+
+        //angularPropertyDescription.DividableBy = propertyDescriptor.GetAttribute<DividableByAttribute>()?.Divisor;
 
 
         // Falls der DbContext übergeben wurde, prüfen, ob Property der Primärschlüssel ist

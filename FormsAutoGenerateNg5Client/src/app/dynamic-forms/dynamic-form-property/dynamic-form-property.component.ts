@@ -16,6 +16,9 @@ export class DynamicFormPropertyComponent implements OnInit {
   // FormGroup-Objekt für dieses Control
   @Input() form: FormGroup;
 
+  public get thisFormControl(){
+    return this.form.controls[this.propertyDescriptor.name]
+  }
   constructor() { }
  
   ngOnInit() {

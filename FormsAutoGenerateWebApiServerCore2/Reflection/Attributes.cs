@@ -36,10 +36,7 @@ namespace FormsAutoGenerateAnsatzWebApiServer.Reflection
       this.Divisor = divisor;
     }
 
-    public DividableByAttribute()
-    {
-
-    }
+    public DividableByAttribute() { }
 
     public override bool IsValid(object value)
     {

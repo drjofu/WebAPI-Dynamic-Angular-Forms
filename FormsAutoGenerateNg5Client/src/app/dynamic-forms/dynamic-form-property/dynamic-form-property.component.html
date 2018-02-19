@@ -31,36 +31,36 @@
   </div>
 
   <!-- Validierungsmeldungen (mehrere können gleichzeitig gültig sein) -->
-  <div class="text-danger" *ngIf="!form.controls[propertyDescriptor.name].valid">
+  <div class="text-danger" *ngIf="!thisFormControl.valid">
 
-    <div *ngIf="form.controls[propertyDescriptor.name].errors?.minlength">
-      Eingabe hat {{form.controls[propertyDescriptor.name].errors.minlength.actualLength}} Zeichen. {{form.controls[propertyDescriptor.name].errors.minlength.requiredLength}}
+    <div *ngIf="thisFormControl.errors?.minlength">
+      Eingabe hat {{thisFormControl.errors.minlength.actualLength}} Zeichen. {{thisFormControl.errors.minlength.requiredLength}}
       sind erforderlich.
     </div>
 
-    <div *ngIf="form.controls[propertyDescriptor.name].errors?.maxlength">
-      Eingabe hat {{form.controls[propertyDescriptor.name].errors.maxlength.actualLength}} Zeichen. Maximal {{form.controls[propertyDescriptor.name].errors.maxlength.requiredLength}}
+    <div *ngIf="thisFormControl.errors?.maxlength">
+      Eingabe hat {{thisFormControl.errors.maxlength.actualLength}} Zeichen. Maximal {{thisFormControl.errors.maxlength.requiredLength}}
       sind erlaubt.
     </div>
 
-    <div *ngIf="form.controls[propertyDescriptor.name].errors?.min">
-      Minimum ist {{form.controls[propertyDescriptor.name].errors.min.min}}.
+    <div *ngIf="thisFormControl.errors?.min">
+      Minimum ist {{thisFormControl.errors.min.min}}.
     </div>
 
-    <div *ngIf="form.controls[propertyDescriptor.name].errors?.max">
-      Maximum ist {{form.controls[propertyDescriptor.name].errors.max.max}}.
+    <div *ngIf="thisFormControl.errors?.max">
+      Maximum ist {{thisFormControl.errors.max.max}}.
     </div>
 
-    <div *ngIf="form.controls[propertyDescriptor.name].errors?.required">
+    <div *ngIf="thisFormControl.errors?.required">
       Die Eingabe ist erforderlich.
     </div>
 
-    <div *ngIf="form.controls[propertyDescriptor.name].errors?.evenNumber">
-      Der Wert {{form.controls[propertyDescriptor.name].errors.evenNumber.value}} ist nicht gerade!
+    <div *ngIf="thisFormControl.errors?.evenNumber">
+      Der Wert {{thisFormControl.errors.evenNumber.value}} ist nicht gerade!
     </div>
 
-    <div *ngIf="form.controls[propertyDescriptor.name].errors?.dividableBy">
-      Der Wert {{form.controls[propertyDescriptor.name].errors.dividableBy.value}} ist nicht durch  {{form.controls[propertyDescriptor.name].errors.dividableBy.divisor}} teilbar!
+    <div *ngIf="thisFormControl.errors?.dividableBy">
+      Der Wert {{thisFormControl.errors.dividableBy.value}} ist nicht durch  {{thisFormControl.errors.dividableBy.divisor}} teilbar!
     </div>
 
     

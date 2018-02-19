@@ -16,7 +16,6 @@ namespace FormsAutoGenerateWebApiServerCore2.Models
     public string Bezeichnung { get; set; }
 
     [Display(Name = "Preis", Order = 4)]
-    [DisplayFormat(DataFormatString = "0.00")]
     [DataType("number")]
     public double Preis { get; set; }
 

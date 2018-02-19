@@ -28,7 +28,7 @@ namespace FormsAutoGenerateWebApiServerCore2
       services.AddMvc();
 
       // DbContext über DI verfügbar machen
-      services.AddTransient<WarenhausContext>();
+      services.AddDbContext<WarenhausContext>();
 
       // Metadaten als Singleton bereitstellen
       services.AddSingleton<IEnumerable<Tabledefinition>>(Tabledefinition.CreateFromDbContext<WarenhausContext>());

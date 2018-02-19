@@ -40,9 +40,9 @@ export class PropertyDescriptorConverterService {
 
       if(propertyDescriptor.dividableBy) validators.push(ctrl=>{
         let n = ctrl.value;
-        if ((n % propertyDescriptor.dividableBy) != 0) return { 'dividableBy': { value: n, divisor: propertyDescriptor.dividableBy} };
+        if ((n % propertyDescriptor.dividableBy) != 0) 
+          return { 'dividableBy': { value: n, divisor: propertyDescriptor.dividableBy} };
         return null;
-
       });
 
 

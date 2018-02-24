@@ -119,7 +119,8 @@ namespace FormsAutoGenerateAnsatzWebApiServer.Infrastructure
 
         //angularPropertyDescription.EvenNumber = propertyDescriptor.GetAttribute<EvenNumberAttribute>() != null;
 
-        //angularPropertyDescription.DividableBy = propertyDescriptor.GetAttribute<DividableByAttribute>()?.Divisor;
+        angularPropertyDescription.DividableBy =
+          propertyDescriptor.GetAttribute<DividableByAttribute>()?.Divisor;
 
 
         // Falls der DbContext übergeben wurde, prüfen, ob Property der Primärschlüssel ist

@@ -25,7 +25,8 @@
     public object Minimum { get; set; }
     public object Maximum { get; set; }
 
-    public bool EvenNumber { get; set; }
+    //public bool EvenNumber { get; set; }
+
     public int? DividableBy { get; set; }
 
 

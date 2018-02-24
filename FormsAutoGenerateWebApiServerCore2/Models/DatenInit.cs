@@ -31,7 +31,9 @@ namespace FormsAutoGenerateWebApiServerCore2.Models
         db.Bestellungen.Add(new Bestellung { ArtikelId = 1, KundeId = 2 });
 
 
-
+        db.Flugzeuge.Add(new Flugzeug { Typbezeichnung = "A320", Reichweite = 6000 });
+        db.Flugzeuge.Add(new Flugzeug { Typbezeichnung = "A380", Reichweite = 12000 });
+        db.Flugzeuge.Add(new Flugzeug { Typbezeichnung = "737", Reichweite = 6300 });
 
         db.SaveChanges();
       }

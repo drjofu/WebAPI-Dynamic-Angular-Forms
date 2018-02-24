@@ -24,14 +24,15 @@ namespace FormsAutoGenerateWebApiServerCore2.Infrastructure
     public IEnumerable<AngularPropertyDescriptorBase> PropertyDescriptors { get; set; }
 
     // Automatische Generierung aus DbContext-Klasse
-    public static IEnumerable<Tabledefinition> CreateFromDbContext<TDbContext>() where TDbContext : DbContext, new()
+    public static IEnumerable<Tabledefinition> CreateFromDbContext<TDbContext>()
+      where TDbContext : DbContext, new()
     {
       using (var ctx = new TDbContext())
       {
 
         var type = typeof(TDbContext);
 
-        // Alle Property der Kontextklasse, die vom Typ DbSet<> sind
+        // Alle Properties der Kontextklasse, die vom Typ DbSet<> sind
         var dbsets = type.GetProperties()
           .Where(t => t.PropertyType.IsGenericType 
           && t.PropertyType.GetGenericTypeDefinition() == typeof(DbSet<>));

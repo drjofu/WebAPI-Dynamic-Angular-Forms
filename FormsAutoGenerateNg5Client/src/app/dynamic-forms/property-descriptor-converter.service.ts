@@ -38,12 +38,12 @@ export class PropertyDescriptorConverterService {
       //   return null;
       // });
 
-      // if(propertyDescriptor.dividableBy) validators.push(ctrl=>{
-      //   let n = ctrl.value;
-      //   if ((n % propertyDescriptor.dividableBy) != 0) 
-      //     return { 'dividableBy': { value: n, divisor: propertyDescriptor.dividableBy} };
-      //   return null;
-      // });
+      if(propertyDescriptor.dividableBy) validators.push(ctrl=>{
+        let n = ctrl.value;
+        if ((n % propertyDescriptor.dividableBy) != 0) 
+          return { 'dividableBy': { value: n, divisor: propertyDescriptor.dividableBy} };
+        return null;
+      });
 
 
       // FormControl-Instanz anlegen und der Gruppe hinzufügen

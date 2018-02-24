@@ -19,7 +19,7 @@ namespace FormsAutoGenerateWebApiServerCore2.Models
     [DataType("number")]
     public double Preis { get; set; }
 
-    [JsonIgnore]
+    [JsonIgnore] // Navigation-Property nicht serialisieren
     public Artikelkategorie Kategorie { get; set; }
 
     [LookupTable(LookupUrl = "Artikelkategorien",

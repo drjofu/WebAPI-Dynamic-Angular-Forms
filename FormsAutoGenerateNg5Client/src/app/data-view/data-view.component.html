@@ -29,5 +29,6 @@
 
 <!-- Editor-Fenster -->
 <div class="col-md-4" *ngIf="selectedEntity && propertyDescriptors">
-  <dynamic-form [propertyDescriptors]="propertyDescriptors" [data]="selectedEntity" (saveData)="saveEntity($event)" (cancelled)="cancelled()"></dynamic-form>
+  <dynamic-form [propertyDescriptors]="propertyDescriptors" [data]="selectedEntity" 
+    (saveData)="saveEntity($event)" (cancelled)="cancelled()"></dynamic-form>
 </div>

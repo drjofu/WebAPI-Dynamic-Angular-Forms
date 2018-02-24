@@ -1,6 +1,7 @@
 <div [formGroup]="form" class="form-group">
   <!-- Anzeigetext -->
-  <label [attr.for]="propertyDescriptor.name" class="center-block">{{propertyDescriptor.label}}</label>
+  <label [attr.for]="propertyDescriptor.name" class="center-block">
+    {{propertyDescriptor.label}}</label>
 
   <!-- Controltypes "textbox" und "dropdown unterscheiden" -->
   <div [ngSwitch]="propertyDescriptor.controlType">
@@ -59,9 +60,9 @@
       Der Wert {{thisFormControl.errors.evenNumber.value}} ist nicht gerade!
     </div> -->
 
-    <!-- <div *ngIf="thisFormControl.errors?.dividableBy">
+    <div *ngIf="thisFormControl.errors?.dividableBy">
       Der Wert {{thisFormControl.errors.dividableBy.value}} ist nicht durch  {{thisFormControl.errors.dividableBy.divisor}} teilbar!
-    </div> -->
+    </div>
 
     
   </div>

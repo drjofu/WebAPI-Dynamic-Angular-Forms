@@ -9,8 +9,7 @@ namespace FormsAutoGenerateWebApiServerCore2.Models
     public DbSet<Kunde> Kunden { get; set; }
     public DbSet<Bestellung> Bestellungen { get; set; }
 
-
-
+    public DbSet<Flugzeug> Flugzeuge { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
